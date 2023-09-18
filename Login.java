@@ -13,14 +13,6 @@ import com.qsp.trello.genericutility.BaseClass;
 
 public class Login extends BaseClass {
 
-//	@FindBy(xpath = "//a[text()='Login / Signup']")
-//	private WebElement loginOption;
-//	
-//	@FindBy(id = "idMobile")
-//	public WebElement mobileNoTextfield;
-//	
-//	@FindBy(linkText = "Login with Password")
-//	public WebElement loginButton;
 	
 	@Test
 	

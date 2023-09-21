@@ -6,42 +6,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import com.qsp.trello.genericutility.BaseClass;
 
-public class Login extends BaseClass {
+import petSevaPomRepo.PetsevaLogin;
 
-//	@FindBy(xpath = "//a[text()='Login / Signup']")
-//	private WebElement loginOption;
-//	
-//	@FindBy(id = "idMobile")
-//	public WebElement mobileNoTextfield;
-//	
-//	@FindBy(linkText = "Login with Password")
-//	public WebElement loginButton;
+public class Login extends BaseClass {
+	
 	
 	@Test
-	
 	public void petsevaLogin() throws IOException, Throwable {
 		
 		//Navigate to login page
-		WebElement loginOption=driver.findElement(By.xpath("//a[text()='Login / Signup']"));
-		loginOption.click();
+		PetsevaLogin login= new PetsevaLogin(driver);
+		login.getLoginOption().click();
 		
 		//Login to petseva with password
-		WebElement mobileNoTextfield= driver.findElement(By.id("idMobile"));
-		mobileNoTextfield.sendKeys(fileUtils.readTheDataFromPropertyFile("mobile"));
-		
-		WebElement loginWithPasswordButton= driver.findElement(By.xpath("//button[text()='Login with Password']"));
-		loginWithPasswordButton.click();
-		
-		WebElement passwordTextfield= driver.findElement(By.id("password"));
-		passwordTextfield.sendKeys(fileUtils.readTheDataFromPropertyFile("password"));
-		
-		WebElement loginButton= driver.findElement(By.cssSelector("button[type='submit']"));
-		loginButton.click();
+		login.getMobileNoTextfield().sendKeys(fileUtils.readTheDataFromPropertyFile("mobile"));
+		login.getLoginWithPasswordButton().click();
+		login.getPasswordTextfield().sendKeys(fileUtils.readTheDataFromPropertyFile("password"));
+		login.getLoginButton().click();
 		
 		//Manage clinics
 		WebElement manageClinics= driver.findElement(By.cssSelector("a[href='/clinic']"));
